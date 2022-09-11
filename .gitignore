@@ -1,1 +1,170 @@
-https://pastebin.com/raw/EhJquEqm
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Univeral aimbot Nate Hub", "BloodTheme") -- CREATES THE WINDOW
+
+-- { " Windows " }
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+local Teleports = Window:NewTab("Teleports")
+local TeleportsSection = Teleports:NewSection("Teleports")
+
+local Discord = Window:NewTab("Discord")
+local DiscordSection = Discord:NewSection("Discord")
+
+-- { " Main " }
+MainSection:NewButton("Detection Bypass", "Bypasses Detection", function()
+  game.Players.LocalPlayer.PlayerScripts.AntiExploit:Destroy()
+  warn("Detection Bypass made by Natehub");
+end)
+
+MainSection:NewSlider("walkspeed", "Slider to change your Walkspeed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+  getgenv().WalkSpeedValue = s; --set your desired walkspeed here
+  local Player = game:service'Players'.LocalPlayer;
+  Player.Character.Humanoid:GetPropertyChangedSignal'WalkSpeed':Connect(function()
+  Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+  end)
+  Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+end)
+
+
+MainSection:NewSlider("JumpPower", "Slider to change your JumpPower", 500, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+  getgenv().JumpPowerValue = s; --set your desired walkspeed here
+  local Player = game:service'Players'.LocalPlayer;
+  Player.Character.Humanoid:GetPropertyChangedSignal'JumpPower':Connect(function()
+  Player.Character.Humanoid.JumpPower = getgenv().JumpPowerValue;
+  end)
+  Player.Character.Humanoid.JumpPower = getgenv().JumpPowerValue;
+end)
+
+MainSection:NewButton("No-Fog", "Removes Fog", function()
+  game.Lighting.FogEnd = 100000
+  game.Lighting.FogStart = 0
+  game.Lighting.ClockTime = 14
+  game.Lighting.Brightness = 2
+  game.Lighting.GlobalShadows = false
+  while( true )
+do
+  wait(0.1) game.Lighting.water_view_distance_thing:Destroy() break; end
+  while( true )
+do
+  wait(0.1) game.Lighting.Atmosphere:Destroy() break; end
+  while( true )
+do
+  wait(0.1) game.Lighting.Value:Destroy() break; end
+  while( true )
+do
+  wait(0.1) game.Lighting.water_blur:Destroy() break; end
+  while( true )
+do
+  wait(0.1) game.Lighting.water_ting:Destroy() break; end
+
+end)
+
+
+MainSection:NewButton("X to noclip", "Press X so that you could noclip through walls", function()
+  local Players, RService = game:GetService("Players"), game:GetService("RunService");
+  local LocalP, Mouse = Players.LocalPlayer, Players.LocalPlayer:GetMouse();
+  local Rm, Index, NIndex, NCall, Caller = getrawmetatable(game), getrawmetatable(game).__index, getrawmetatable(game).__newindex, getrawmetatable(game).__namecall, checkcaller or is_protosmasher_caller
+  local NoClip, NoClipKey = false, "x" -- change 'x' to whatever you want
+  setreadonly(Rm, false)
+  
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/Universal-Scripts/main/Notification%20Function", true))()
+  Notify("Natehub", "Press F9 for Directions", "", 4);
+  warn("NoClip + Bypass made by Natehub");
+  warn("Press "..string.upper(NoClipKey).." to turn off and on NoClip");
+  
+  Rm.__newindex = newcclosure(function(self, Meme, Value)
+      if Caller() then return NIndex(self, Meme, Value) end 
+      if tostring(self) == "HumanoidRootPart" or tostring(self) == "Torso" then 
+          if Meme == "CFrame" and self:IsDescendantOf(LocalP.Character) then 
+              return true -- Credits to ze_lI for this
+          end
+      end
+      return NIndex(self, Meme, Value)
+  end)
+  setreadonly(Rm, true)
+  
+  RService.Stepped:Connect(function()
+      if NoClip == true and LocalP and LocalP.Character and LocalP.Character:FindFirstChild("Humanoid") then 
+          pcall(function() -- 
+              LocalP.Character.Head.CanCollide = false 
+              LocalP.Character.Torso.CanCollide = false
+          end)
+      end
+  end)
+  
+  Mouse.KeyDown:Connect(function(Key)
+      if Key == NoClipKey then 
+          NoClip = not NoClip
+          Notify("Nate-Hub", "NoClip: "..tostring(NoClip), "", 3)
+      end
+  end)
+end)
+
+
+TeleportsSection:NewButton("Get all items", "Gets all items on floore", function()
+  local function tp(...)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(...))
+    end
+    
+    tp(-110.10004425048828, 3.999946117401123, -170.0999755859375, -0, -0.088479504, 0, 1, -0, 0.088479504, 0, 0.996078014)
+    task.wait(0.5)
+    tp(-234.09951782226562, 3.9612598419189453, -160.6982879638672, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(-213.89952087402344, 3.9998908042907715, -21.09820556640625, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(-68.49998474121094, 3.9885165691375732, 141.50009155273438, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(-259.5241394042969, 4.1844096183776855, 169.43080139160156, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(23.700439453125, 4.000000476837158, 97.70162963867188, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(108.69989776611328, 3.9981424808502197, 78.5022964477539, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(98.2999267578125, 4.0000128746032715, 16.697547912597656, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(101.20191955566406, 20.739906311035156, -48.45447540283203, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+    tp(95.09983825683594, 4.0000128746032715, -139.50155639648438, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    task.wait(0.5)
+end)
+
+TeleportsSection:NewButton("Pilar", "Teleports to Pilar", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(99.65272521972656, 20.739831924438477, -47.26654052734375))
+  task.wait(0.3)
+end)
+
+TeleportsSection:NewButton("Cave", "Teleports to Cave", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new( -243.6267547607422, 4.200252532958984, 158.69528198242188))
+  task.wait(0.3)
+end)
+
+TeleportsSection:NewButton("BlueTent", "Teleports to BlueTent", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new( -14.592418670654297, 4.200013160705566, -53.706520080566406))
+  task.wait(0.3)
+end)
+
+TeleportsSection:NewButton("end of bears", "Teleports to end of bears", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(  -605.5629272460938, -47.40005111694336, 169.6866455078125))
+  task.wait(0.3)
+end)
+
+TeleportsSection:NewButton("End of Parkour", "Teleports to End of Parkour", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(  -462.551513671875, 16.440027236938477, -0.294586181640625))
+  task.wait(0.3)
+end)
+
+TeleportsSection:NewButton("End of Slide", "Teleports to End of Slide", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(  -431.4936828613281, -57.800025939941406, 158.39999389648438))
+  task.wait(0.3)
+end)
+
+TeleportsSection:NewButton("End of Basket", "Teleports to End of Basket", function()
+  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(  -56.114959716796875, 5.938583850860596, -16.921524047851562))
+  task.wait(0.3)
+end)
+
+-- { " Discord " }
+DiscordSection:NewButton("Discord", "https://discord.gg/vCzNfkcHJ7", function()
+  setclipboard('https://discord.gg/vCzNfkcHJ7')
+  end)
